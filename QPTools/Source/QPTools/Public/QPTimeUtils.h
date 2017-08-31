@@ -4,24 +4,35 @@
 
 #include "CoreMinimal.h"
 #include "UObject/NoExportTypes.h"
-#include "QPTimeUtils.generated.h"
+
 /**
  *
  */
+UENUM(BlueprintType)
+enum class EQPTimeType : uint8
+{
+	Year,
+	Month,
+	Day,
+	Hour,
+	Minute,
+	Second
+};
+
+#include "QPTimeUtils.generated.h"
 UCLASS()
-class  UQPTimeUtils : public UObject
+class  QPTOOLS_API UQPTimeUtils : public UObject
 {
 	GENERATED_BODY()
 	
 	FDateTime _DateTime;
-	FDateTime _DateTimeNow;
 	int32 _Year;
 	int32 _Month;
 	int32 _Day;
 	int32 _Hour;
 	int32 _Minute;
 	int32 _Second;
-
+	bool _isReset;
 public:
 	UQPTimeUtils();
 
@@ -48,6 +59,67 @@ public:
 
 	UFUNCTION(BlueprintPure, Category = "UQPTimeUtils")
 	int32 GetElapsedSecond();
+
+	UFUNCTION(BlueprintPure, Category = "UQPTimeUtils")
+	int32 GetFutureYear();
+
+	UFUNCTION(BlueprintPure, Category = "UQPTimeUtils")
+	int32 GetFutureMonth();
+
+	UFUNCTION(BlueprintPure, Category = "UQPTimeUtils")
+	int32 GetFutureDay();
+
+	UFUNCTION(BlueprintPure, Category = "UQPTimeUtils")
+	int32 GetFutureHour();
+
+	UFUNCTION(BlueprintPure, Category = "UQPTimeUtils")
+	int32 GetFutureMinute();
+
+	UFUNCTION(BlueprintPure, Category = "UQPTimeUtils")
+	int32 GetFutureSecond();
+
+	UFUNCTION(BlueprintCallable, Category = "UQPTimeUtils")
+		void SetYear(int32 time);
+
+	UFUNCTION(BlueprintCallable, Category = "UQPTimeUtils")
+		void SetMonth(int32 time);
+
+	UFUNCTION(BlueprintCallable, Category = "UQPTimeUtils")
+		void SetDay(int32 time);
+
+	UFUNCTION(BlueprintCallable, Category = "UQPTimeUtils")
+		void SetHour(int32 time);
+
+	UFUNCTION(BlueprintCallable, Category = "UQPTimeUtils")
+		void SetMinute(int32 time);
+
+	UFUNCTION(BlueprintCallable, Category = "UQPTimeUtils")
+		void SetSecond(int32 time);
+
+	UFUNCTION(BlueprintCallable, Category = "UQPTimeUtils")
+		void SetTimeByKey(EQPTimeType key,int32 time);
+
+
+	UFUNCTION(BlueprintPure, Category = "UQPTimeUtils")
+		int32 GetYear();
+
+	UFUNCTION(BlueprintPure, Category = "UQPTimeUtils")
+		int32 GetMonth();
+
+	UFUNCTION(BlueprintPure, Category = "UQPTimeUtils")
+		int32 GetDay();
+
+	UFUNCTION(BlueprintPure, Category = "UQPTimeUtils")
+		int32 GetHour();
+
+	UFUNCTION(BlueprintPure, Category = "UQPTimeUtils")
+		int32 GetMinute();
+
+	UFUNCTION(BlueprintPure, Category = "UQPTimeUtils")
+		int32 GetSecond();
+
+	UFUNCTION(BlueprintPure, Category = "UQPTimeUtils")
+		int32 GetTimeByKey(EQPTimeType key);
 
 	FTimespan GetElapsedDateTime();
 };

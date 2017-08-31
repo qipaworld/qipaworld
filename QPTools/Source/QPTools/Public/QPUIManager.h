@@ -11,7 +11,7 @@
  */
 
 UCLASS()
-class  AQPUIManager : public AActor
+class QPTOOLS_API AQPUIManager : public AActor
 {
 	GENERATED_BODY()
 

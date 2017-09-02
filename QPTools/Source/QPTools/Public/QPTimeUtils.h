@@ -42,41 +42,48 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "UQPTimeUtils")
 	void SetDefaultTime(int32 DefaultYear = 1, int32 DefaultMonth = 1, int32 DefaultDay = 1, int32 DefaultHour = 0, int32 DefaultMinute = 0, int32 DefaultSecond = 0);
 	
-	UFUNCTION(BlueprintPure, Category = "UQPTimeUtils")
-	int32 GetElapsedYear();
+	int64 GetElapsedYear();
+	int64 GetElapsedMonth();
+	int64 GetElapsedDay();
+	int64 GetElapsedHour();
+	int64 GetElapsedMinute();
+	int64 GetElapsedSecond();
 
 	UFUNCTION(BlueprintPure, Category = "UQPTimeUtils")
-	int32 GetElapsedMonth();
+	FString GetElapsedStringYear();
 
 	UFUNCTION(BlueprintPure, Category = "UQPTimeUtils")
-	int32 GetElapsedDay();
+	FString GetElapsedStringMonth();
 
 	UFUNCTION(BlueprintPure, Category = "UQPTimeUtils")
-	int32 GetElapsedHour();
+	FString GetElapsedStringDay();
 
 	UFUNCTION(BlueprintPure, Category = "UQPTimeUtils")
-	int32 GetElapsedMinute();
+	FString GetElapsedStringHour();
 
 	UFUNCTION(BlueprintPure, Category = "UQPTimeUtils")
-	int32 GetElapsedSecond();
+	FString GetElapsedStringMinute();
 
 	UFUNCTION(BlueprintPure, Category = "UQPTimeUtils")
-	int32 GetFutureYear();
+	FString GetElapsedStringSecond();
 
 	UFUNCTION(BlueprintPure, Category = "UQPTimeUtils")
-	int32 GetFutureMonth();
+	FString GetFutureStringYear();
 
 	UFUNCTION(BlueprintPure, Category = "UQPTimeUtils")
-	int32 GetFutureDay();
+	FString GetFutureStringMonth();
 
 	UFUNCTION(BlueprintPure, Category = "UQPTimeUtils")
-	int32 GetFutureHour();
+	FString GetFutureStringDay();
 
 	UFUNCTION(BlueprintPure, Category = "UQPTimeUtils")
-	int32 GetFutureMinute();
+	FString GetFutureStringHour();
 
 	UFUNCTION(BlueprintPure, Category = "UQPTimeUtils")
-	int32 GetFutureSecond();
+	FString GetFutureStringMinute();
+
+	UFUNCTION(BlueprintPure, Category = "UQPTimeUtils")
+	FString GetFutureStringSecond();
 
 	UFUNCTION(BlueprintCallable, Category = "UQPTimeUtils")
 		void SetYear(int32 time);

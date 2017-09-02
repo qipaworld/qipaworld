@@ -26,20 +26,21 @@ void UQPTimeUtils::SetDefaultTime(int32 DefaultYear, int32 DefaultMonth, int32 D
 FTimespan UQPTimeUtils::GetElapsedDateTime() {
 	if (_isReset){
 		_DateTime = FDateTime(_Year, _Month, _Day, _Hour, _Minute, _Second, 0);
+		_isReset = false;
 	}
 	return (FDateTime::Now() - _DateTime);
 }
 
-int32 UQPTimeUtils::GetElapsedYear() {
+int64 UQPTimeUtils::GetElapsedYear() {
 
 	int32 year, month, day;
 	FDateTime time = FDateTime::Now();
-	int32 hour = time.GetHour();
-	int32 minutes = time.GetMinute();
-	int32 seconds = time.GetSecond();
+	int64 hour = time.GetHour();
+	int64 minutes = time.GetMinute();
+	int64 seconds = time.GetSecond();
 	time.GetDate(year, month, day);
 
-	int32 yearNum = year - _Year;
+	int64 yearNum = year - _Year;
 
 	if (_Month > month + 1){
 		yearNum--;
@@ -67,17 +68,17 @@ int32 UQPTimeUtils::GetElapsedYear() {
 	return yearNum;
 }
 
-int32 UQPTimeUtils::GetElapsedMonth(){
+int64 UQPTimeUtils::GetElapsedMonth(){
 
 	int32 year, month, day;
 	FDateTime time = FDateTime::Now();
-	int32 hour = time.GetHour();
-	int32 minutes = time.GetMinute();
-	int32 seconds = time.GetSecond();
+	int64 hour = time.GetHour();
+	int64 minutes = time.GetMinute();
+	int64 seconds = time.GetSecond();
 
 	time.GetDate(year, month, day);
-	int32 yearNum = year - _Year;
-	int32 monthNum = (year - _Year) * 12 + month - _Month;
+	int64 yearNum = year - _Year;
+	int64 monthNum = (year - _Year) * 12 + month - _Month;
 
 	if (_Day > day){
 		monthNum--;
@@ -100,45 +101,71 @@ int32 UQPTimeUtils::GetElapsedMonth(){
 	return monthNum;
 }
 
-int32 UQPTimeUtils::GetElapsedDay() {
+int64 UQPTimeUtils::GetElapsedDay() {
 	return GetElapsedDateTime().GetTotalDays();
 }
 
-int32 UQPTimeUtils::GetElapsedHour() {
+int64 UQPTimeUtils::GetElapsedHour() {
 	return GetElapsedDateTime().GetTotalHours();
 }
 
-int32 UQPTimeUtils::GetElapsedMinute() {
+int64 UQPTimeUtils::GetElapsedMinute() {
 	return GetElapsedDateTime().GetTotalMinutes();
 }
 
-int32 UQPTimeUtils::GetElapsedSecond() {
+int64 UQPTimeUtils::GetElapsedSecond() {
 	return GetElapsedDateTime().GetTotalSeconds();
 }
 
+FString UQPTimeUtils::GetElapsedStringYear() {
 
-int32 UQPTimeUtils::GetFutureYear() {
-	return -this->GetElapsedYear();
+	return FString::SanitizeFloat(this->GetElapsedYear());
 }
 
-int32 UQPTimeUtils::GetFutureMonth(){
-	return -this->GetElapsedMonth();
+FString UQPTimeUtils::GetElapsedStringMonth(){
+
+	return FString::SanitizeFloat(this->GetElapsedMonth());
+	
 }
 
-int32 UQPTimeUtils::GetFutureDay() {
-	return -this->GetElapsedDay();
+FString UQPTimeUtils::GetElapsedStringDay() {
+	return FString::SanitizeFloat(this->GetElapsedDay());
 }
 
-int32 UQPTimeUtils::GetFutureHour() {
-	return -this->GetElapsedHour();
+FString UQPTimeUtils::GetElapsedStringHour() {
+	return FString::SanitizeFloat(this->GetElapsedHour());
 }
 
-int32 UQPTimeUtils::GetFutureMinute() {
-	return -this->GetElapsedMinute();
+FString UQPTimeUtils::GetElapsedStringMinute() {
+	return FString::SanitizeFloat(this->GetElapsedMinute());
 }
 
-int32 UQPTimeUtils::GetFutureSecond() {
-	return -this->GetElapsedSecond();
+FString UQPTimeUtils::GetElapsedStringSecond() {
+	return FString::SanitizeFloat(this->GetElapsedSecond());
+}
+
+FString UQPTimeUtils::GetFutureStringYear() {
+	return FString::SanitizeFloat(-this->GetElapsedYear());
+}
+
+FString UQPTimeUtils::GetFutureStringMonth(){
+	return FString::SanitizeFloat(-this->GetElapsedMonth());
+}
+
+FString UQPTimeUtils::GetFutureStringDay() {
+	return FString::SanitizeFloat(-this->GetElapsedDay());
+}
+
+FString UQPTimeUtils::GetFutureStringHour() {
+	return FString::SanitizeFloat(-this->GetElapsedHour());
+}
+
+FString UQPTimeUtils::GetFutureStringMinute() {
+	return FString::SanitizeFloat(-this->GetElapsedMinute());
+}
+
+FString UQPTimeUtils::GetFutureStringSecond() {
+	return FString::SanitizeFloat(-this->GetElapsedSecond());
 }
 
 
